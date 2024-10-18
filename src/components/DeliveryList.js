@@ -4,7 +4,7 @@ import ButtonComponent from './button';
 
 function DeliveryList() {
     return (
-        <form className={styles.deliveryList}>
+        <form action="/src/components/php/send.php" method="post" className={styles.deliveryList}>
             <div>
                 <label htmlFor="file">Загрузить файл</label>
                 <input type="file" id="file" name="file" required />
