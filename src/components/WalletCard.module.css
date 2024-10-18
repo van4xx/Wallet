@@ -1,0 +1,15 @@
+.walletCard {
+    background: linear-gradient(66.02deg, #1566DF 0%, #21C5DB 84.01%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    max-height: 160px;
+    height: 100vh;
+    max-width: 302px;
+    width: 100%;
+    align-self: center;
+}
+
+.cardContent {
+    text-align: start;
+}

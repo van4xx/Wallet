@@ -1,0 +1,23 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    max-width: 390px;
+    padding: 20px;
+    gap: 20px;
+}
+.tab-section {
+    border-bottom: 1px solid #E8EFFB;
+    display: flex;
+    justify-content: space-between;
+}
+.tab-section .tab {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-align: center;
+}
+.tab-section .tab.selected {
+    color: #1A70FE;
+    border-bottom: 3px solid #1A70FE;
+}

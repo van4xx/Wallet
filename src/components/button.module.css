@@ -1,0 +1,11 @@
+.button {
+    border: none;
+    background: rgb(35 100 250);
+    padding: 24px;
+    color: white;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16px;
+    border-radius: 10px;
+}

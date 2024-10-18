@@ -1,0 +1,126 @@
+.swap {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.currencyPair {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.currencyLabel {
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.swapInput {
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    transition: all 0.3s ease;
+}
+
+.swapInput:focus-within {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.swapInput input {
+    border: none;
+    outline: none;
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+    background-color: transparent;
+    width: 100%;
+}
+
+.swapInputLeft, .swapInputRight {
+    display: flex;
+    align-items: center;
+}
+
+.swapInputLeft {
+    flex: 1;
+}
+
+.swapInputRight {
+    margin-left: 12px;
+}
+
+.swapInputButton {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.swapInputButton:hover, .swapInputButton.active {
+    background-color: #007bff;
+    color: #ffffff;
+}
+
+.swapInputButton img {
+    width: 20px;
+    height: 20px;
+}
+
+.currencyButtons {
+    display: flex;
+    gap: 8px;
+}
+
+.aboutSwap {
+    background-color: #f0f4f8;
+    border-radius: 12px;
+    padding: 16px;
+}
+
+.aboutSwapItem {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.aboutSwapItem:last-child {
+    margin-bottom: 0;
+}
+
+.swapButton {
+    padding: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.swapButton:hover {
+    background-color: #0056b3;
+}

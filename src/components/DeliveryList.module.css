@@ -1,0 +1,83 @@
+.deliveryList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 24px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.deliveryList input[type="text"],
+.deliveryList input[type="file"] {
+    width: 80%;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.deliveryList input[type="text"]:focus,
+.deliveryList input[type="file"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.deliveryList input[type="file"] {
+    padding: 10px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+}
+
+.deliveryList input[type="file"]::file-selector-button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.deliveryList input[type="file"]::file-selector-button:hover {
+    background-color: #0056b3;
+}
+
+.submitButton {
+    padding: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    width: 80%;
+    align-self: center;
+}
+
+.submitButton:hover {
+    background-color: #0056b3;
+}
+
+/* Добавим стили для меток */
+.deliveryList label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Добавим стили для контейнера каждого поля ввода */
+.deliveryList > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
