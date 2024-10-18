@@ -44,9 +44,9 @@ function Swap() {
         // Пересчитываем значения при смене валюты
         if (fromValue > 0) {
             if (currency === 'RMB') {
-                setToValue((fromValue * RMB_TO_RUB_RATE).toFixed(2));
+                setFromValue((toValue / RMB_TO_RUB_RATE).toFixed(2));
             } else {
-                setToValue((fromValue * USDT_TO_RUB_RATE).toFixed(2));
+                setFromValue((toValue / USDT_TO_RUB_RATE).toFixed(2));
             }
         }
     };
