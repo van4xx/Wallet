@@ -12,9 +12,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $fileType = $_FILES['file']['type'];
         
         // Сохранение файла (например, в папку "uploads")
-        $uploadFileDir = './uploads/';
+        $uploadFileDir = $_SERVER['DOCUMENT_ROOT']. '/uploads/';
         $dest_path = $uploadFileDir . $fileName;
-
+		if(!is_dir($uploadFileDir)) {
+			mkdir($uploadFileDir, 0777, true);
+		}
+		chmod($uploadFileDir, 0777);
         if (move_uploaded_file($fileTmpPath, $dest_path)) {
             $fileMessage = "Файл успешно загружен: $fileName";
         } else {
