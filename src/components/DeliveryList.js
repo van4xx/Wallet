@@ -4,7 +4,7 @@ import ButtonComponent from './button';
 
 function DeliveryList() {
     return (
-       <form action="https://api.cargotma.online/test.php" method="post" enctype="multipart/form-data" className={styles.deliveryList}>
+       <form action="https://api.cargotma.online/send.php" method="post" enctype="multipart/form-data" className={styles.deliveryList}>
             <div>
                 <label hmtlFor="file">Загрузить файл</label>
                 <input type="file" id="file" name="file" required />
