@@ -4,20 +4,20 @@ import ButtonComponent from './button';
 
 function DeliveryList() {
     return (
-        <form action="/src/components/php/send.php" method="post" className={styles.deliveryList}>
+       <form action="https://api.cargotma.online/send.php" method="post" enctype="multipart/form-data" class="DeliveryList_deliveryList__yiXod">
             <div>
-                <label htmlFor="file">Загрузить файл</label>
-                <input type="file" id="file" name="file" required />
+                <label for="file">Загрузить файл</label>
+                <input type="file" id="file" name="file" required="">
             </div>
             <div>
-                <label htmlFor="size">Размер товара</label>
-                <input type="text" id="size" name="size" placeholder="Введите размер товара" required />
+                <label for="size">Размер товара</label>
+                <input type="text" id="size" name="size" placeholder="Введите размер товара" required="">
             </div>
             <div>
-                <label htmlFor="weight">Вес товара</label>
-                <input type="text" id="weight" name="weight" placeholder="Введите вес товара" required />
+                <label for="weight">Вес товара</label>
+                <input type="text" id="weight" name="weight" placeholder="Введите вес товара" required="">
             </div>
-            <ButtonComponent className={styles.submitButton}>Подтвердить</ButtonComponent>
+            <button class="button_button__VWeAX">Подтвердить</button>
         </form>
     );
 }
