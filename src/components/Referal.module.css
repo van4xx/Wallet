@@ -1,22 +1,80 @@
-.referalContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 24px;
-    background-color: #ffffff;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 0 auto;
-    text-align: center;
+.referalMessage {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    line-height: 1.1;
+    margin-bottom: 20px;
 }
 
-.referalMessage {
-    font-size: 16px;
-    color: #333;
-    line-height: 1.5;
-    margin-bottom: 20px;
+.referalsContainer {
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+    justify-content: start;
+    text-align: start;
+    width: 100%;
+}
+
+.referalsContainer h2 {
+	font-weight: bold;
+	font-size: 16px;
+	color: #121212;
+}
+
+.referalsBody {
+	padding: 10px 0;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	gap: 10px;
+}
+
+.referalsBody .referal {
+	background: #f5f5f5;
+	padding: 5px 10px;
+	display: flex;
+	width: 100%;
+	gap: 10px;
+	border-radius: 10px;
+	text-align: center;
+	align-items: center;
+}
+
+.referalsBody .referal .referalImg {
+	background: #a2d2ff;
+	padding: 5px 10px;
+	border-radius: 20px;
+	width: 30px;
+	height: 30px;
+	user-select: none;
+}
+
+.referalsBody .referal .referalName {
+	font-size: 16px;
+}
+
+.referalsBottom {
+	display: flex;
+	gap: 5px;
+}
+
+.referalsBottom button {
+	border: none;
+	padding: 5px 5px;
+	border-radius: 10px;
+	background: #007FFF;
+	color: white;
+	font-weight: bold;
+	font-size: 14px;
+	
+}
+
+.referalsBottom .inviteFriend {
+	flex: 2 2;
+}
+
+.referalsBottom .copyInviteUrl {
+	flex: 1 1;
 }
 
 .comingSoon {

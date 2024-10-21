@@ -3,21 +3,42 @@ import styles from './Swap.module.css';
 import ButtonComponent from './button';
 import RubLogo from './rub.svg';
 import RmbLogo from './rmb.svg';
-import UsdtLogo from './usd.svg'; // Импортируем иконку USDT
+import UsdtLogo from './usd.svg';
 
-// Установим фиксированные курсы
-const RMB_TO_RUB_RATE = 14.11;
-const USDT_TO_RUB_RATE = 101.5; // Примерный курс USDT к RUB
+
 
 function Swap() {
     const [fromValue, setFromValue] = useState(0.0);
     const [toValue, setToValue] = useState(0.0);
     const [fromCurrency, setFromCurrency] = useState('RMB');
 
+    const [RMB_TO_RUB_RATE, setRMB_TO_RUB_RATE]= useState(0.0);
+    const [USDT_TO_RUB_RATE, setUSDT_TO_RUB_RATE] = useState(0.0);
+
     useEffect(() => {
         setFromValue(0.0);
         setToValue(0.0);
     }, []);
+
+    useEffect(() => {
+        const ws = new WebSocket('wss://cargotma.online/ws');
+        ws.onopen = () => {
+          console.log('WebSocket connection established');
+        };
+        ws.onmessage = (event) => {
+          console.log(event.data);
+          let data = JSON.parse(event.data)
+          setRMB_TO_RUB_RATE(data?.rmb)
+          setUSDT_TO_RUB_RATE(data?.usdt)
+        };
+        ws.onclose = () => {
+          console.log('WebSocket connection closed');
+        };
+        //setSocket(ws);
+        return () => {
+          ws.close();
+        };
+      }, []);
 
     const handleFromInputChange = (e) => {
         const value = parseFloat(e.target.value) || 0.0;
@@ -95,21 +116,25 @@ function Swap() {
                     </div>
                 </div>
             </div>
-            <div className={styles.aboutSwap}>
-                <div className={styles.aboutSwapItem}>
-                    <div className={styles.aboutSwapItemLeft}>Цена:</div>
-                    <div className={styles.aboutSwapItemRight}>
-                        {fromCurrency === 'RMB' ? RMB_TO_RUB_RATE : USDT_TO_RUB_RATE} RUB per 1 {fromCurrency}
-                    </div>
-                </div>
-                <div className={styles.aboutSwapItem}>
-                    <div className={styles.aboutSwapItemLeft}>Route:</div>
-                    <div className={styles.aboutSwapItemRight}>
-                        {fromCurrency} → RUB
-                    </div>
-                </div>
-            </div>
-            <ButtonComponent className={styles.swapButton}>Swap</ButtonComponent>
+            <div className={styles.swapBottom}>
+	            <div className={styles.aboutSwap}>
+	                <div className={styles.aboutSwapItem}>
+	                    <div className={styles.aboutSwapItemLeft}>Цена:</div>
+	                    <div className={styles.aboutSwapItemRight}>
+	                        {fromCurrency === 'RMB' ? RMB_TO_RUB_RATE : USDT_TO_RUB_RATE} RUB per 1 {fromCurrency}
+	                    </div>
+	                </div>
+	                <div className={styles.aboutSwapItem}>
+	                    <div className={styles.aboutSwapItemLeft}>Route:</div>
+	                    <div className={styles.aboutSwapItemRight}>
+	                        RUB → {fromCurrency}
+	                    </div>
+	                </div>
+	            </div>
+	            <ButtonComponent className={styles.swapButton} onClick={() => {
+	            	window.open(`https://t.me/Wenliwang`, '_blank')
+	            }}>Swap</ButtonComponent>
+	       </div>
         </div>
     );
 }
