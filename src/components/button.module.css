@@ -1,11 +1,13 @@
 .button {
+    align-self: center;
+    background-color: #007bff;
     border: none;
-    background: rgb(35 100 250);
-    padding: 24px;
-    color: white;
-    font-family: Inter;
+    border-radius: 8px;
+    color: #fff;
+    cursor: pointer;
     font-size: 16px;
-    font-weight: 500;
-    line-height: 16px;
-    border-radius: 10px;
+    font-weight: 600;
+    padding: 14px;
+    transition: all .3s ease;
+    width: 100%;
 }

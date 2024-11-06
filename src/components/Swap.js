@@ -5,8 +5,6 @@ import RubLogo from './rub.svg';
 import RmbLogo from './rmb.svg';
 import UsdtLogo from './usd.svg';
 
-
-
 function Swap() {
     const [fromValue, setFromValue] = useState(0.0);
     const [toValue, setToValue] = useState(0.0);
@@ -14,16 +12,23 @@ function Swap() {
 
     const [RMB_TO_RUB_RATE, setRMB_TO_RUB_RATE]= useState(0.0);
     const [USDT_TO_RUB_RATE, setUSDT_TO_RUB_RATE] = useState(0.0);
+    const [socket, setSocket] = useState();
+    let tg;
 
     useEffect(() => {
         setFromValue(0.0);
         setToValue(0.0);
     }, []);
 
-    useEffect(() => {
+      useEffect(() => {
         const ws = new WebSocket('wss://cargotma.online/ws');
         ws.onopen = () => {
-          console.log('WebSocket connection established');
+            tg = window?.Telegram?.WebApp;
+            console.log(tg?.initDataUnsafe?.user)
+            ws.send(JSON.stringify({request: "currency"}));
+            if(tg?.initDataUnsafe?.user?.id.toString() && tg?.initDataUnsafe?.start_param.toString()) {
+                ws.send(JSON.stringify({request: "setReferal", id: tg?.initDataUnsafe?.user?.id.toString(), firstname: window?.Telegram?.WebApp?.initDataUnsafe?.user?.first_name, lastname: window?.Telegram?.WebApp?.initDataUnsafe?.user?.last_name, referal: tg?.initDataUnsafe?.start_param?.toString()}));
+            }
         };
         ws.onmessage = (event) => {
           console.log(event.data);
@@ -34,11 +39,11 @@ function Swap() {
         ws.onclose = () => {
           console.log('WebSocket connection closed');
         };
-        //setSocket(ws);
+        setSocket(ws);
         return () => {
           ws.close();
         };
-      }, []);
+      }, [])
 
     const handleFromInputChange = (e) => {
         const value = parseFloat(e.target.value) || 0.0;
@@ -104,13 +109,6 @@ function Swap() {
                                     <img src={RmbLogo} alt="RMB" />
                                     RMB
                                 </button>
-                                <button 
-                                    className={`${styles.swapInputButton} ${fromCurrency === 'USDT' ? styles.active : ''}`} 
-                                    onClick={() => handleCurrencyChange('USDT')}
-                                >
-                                    <img src={UsdtLogo} alt="USDT" />
-                                    USDT
-                                </button>
                             </div>
                         </div>
                     </div>
@@ -131,9 +129,11 @@ function Swap() {
 	                    </div>
 	                </div>
 	            </div>
+                
 	            <ButtonComponent className={styles.swapButton} onClick={() => {
-	            	window.open(`https://t.me/Wenliwang`, '_blank')
-	            }}>Swap</ButtonComponent>
+                    socket.send(JSON.stringify({request: "swap", usdt: fromCurrency === 'USDT' ? fromValue : 0, rmb: fromCurrency === 'RMB' ? fromValue : 0, currency: {usdt: USDT_TO_RUB_RATE, rmb: RMB_TO_RUB_RATE}, username: window?.Telegram?.WebApp?.initDataUnsafe?.user?.username, userid: window?.Telegram?.WebApp?.initDataUnsafe?.user?.id, firstname: window?.Telegram?.WebApp?.initDataUnsafe?.user?.first_name, lastname: window?.Telegram?.WebApp?.initDataUnsafe?.user?.last_name}))
+                    window.Telegram.WebApp.close()
+	            }}>Find</ButtonComponent>
 	       </div>
         </div>
     );
